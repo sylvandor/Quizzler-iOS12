@@ -64,10 +64,10 @@ class ViewController: UIViewController {
     func checkAnswer(_ userAnswer: Bool) {
         let question = questions.list[currentQuestionIndex]
         if userAnswer == question.answer {
-            print("Correct")
+            ProgressHUD.showSuccess("Correct")
             score += 1
         } else {
-            print("Incorrect")
+            ProgressHUD.showError("Incorrect")
         }
     }
     
