@@ -46,7 +46,6 @@ class ViewController: UIViewController {
     
 
     func nextQuestion() {
-        print (String(format: "%d%@%d", currentQuestionIndex, " / ", questions.list.count))
         if currentQuestionIndex < questions.list.count {
             questionLabel.text = questions.list[currentQuestionIndex].questionText
         } else {
