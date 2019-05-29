@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        questionLabel.text = questions.list[currentQuestionIndex].questionText
+        updateUI()
     }
 
 
@@ -33,7 +33,6 @@ class ViewController: UIViewController {
         let userAnswer = sender.tag == 1 ? true : false
         
         checkAnswer(userAnswer)
-        currentQuestionIndex += 1
        
         nextQuestion()
         updateUI()
@@ -41,16 +40,11 @@ class ViewController: UIViewController {
     
     
     func updateUI() {
-//        progressBar
-    }
-    
-
-    func nextQuestion() {
         if currentQuestionIndex < questions.list.count {
             questionLabel.text = questions.list[currentQuestionIndex].questionText
         } else {
             let alert = UIAlertController(title: "Awesome", message: "You've finished all of the questions, would you like to start over?", preferredStyle: .alert)
-         
+            
             let restartAction = UIAlertAction(title:"Restart", style: .default, handler:
             { (UIAlertAction) in
                 self.startOver()})
@@ -58,8 +52,12 @@ class ViewController: UIViewController {
             alert.addAction(restartAction)
             
             present(alert, animated:true, completion: nil)
-            
         }
+    }
+    
+
+    func nextQuestion() {
+        currentQuestionIndex += 1
     }
     
     
@@ -74,6 +72,6 @@ class ViewController: UIViewController {
     
     func startOver() {
         currentQuestionIndex = 0
-        nextQuestion()
+        updateUI()
     }
 }
