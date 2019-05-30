@@ -73,6 +73,7 @@ class ViewController: UIViewController {
     
     func startOver() {
         currentQuestionIndex = 0
+        score = 0
         updateUI()
     }
 }
